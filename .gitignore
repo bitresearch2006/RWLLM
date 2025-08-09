@@ -1,0 +1,4 @@
+# remove trained model
+local_gpt2_model/
+# ignore logs
+*.log

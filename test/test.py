@@ -1,5 +1,9 @@
 import uuid
-from llm import rwllm, get_last_messages
+import sys
+import os
+# Add the path to the 'main' directory so we can import index.py
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'main')))
+from handler import handle, get_last_messages
 
 print("🔹 Welcome to GPT-2 Chat!")
 print("🔹 Type 'bye', 'stop', or 'exit' to end. Type '/history' to view last messages.\n")
@@ -20,7 +24,7 @@ except ValueError:
 
 # Optionally resume previous session if ID known (uncomment)
 # session_id = "YOUR_PREVIOUS_SESSION_ID"
-response = rwllm(
+response = handle(
     "Hello!",
     session_id=session_id,
     session_start=True,
@@ -35,7 +39,7 @@ print("\nGPT-2:", response, "\n")
 while True:
     user_input = input("You: ").strip()
     if user_input.lower() in ['bye', 'stop', 'exit']:
-        response = rwllm(
+        response = handle(
             user_input,
             session_id=session_id,
             session_end=True,
@@ -56,7 +60,7 @@ while True:
         print()
         continue
 
-    response = rwllm(
+    response = handle(
         user_input,
         session_id=session_id,
         temperature=temperature,
