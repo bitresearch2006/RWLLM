@@ -2,3 +2,4 @@
 local_gpt2_model/
 # ignore logs
 *.log
+build/
