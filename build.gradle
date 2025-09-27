@@ -3,7 +3,7 @@ plugins {
 }
 
 ext {
-    functionName = "obj-detect"
+    functionName = "llm"
     imageName = "localhost:5000/${functionName}:latest"
     gatewayUrl = "http://127.0.0.1:8080"
     templateName = "python3-http-debian"   // declare here
